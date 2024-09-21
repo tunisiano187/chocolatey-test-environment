@@ -93,3 +93,4 @@ choco feature enable -n autouninstaller
 choco feature enable -n allowGlobalConfirmation
 choco feature enable -n logEnvironmentValues
 choco feature disable -n showDownloadProgress
+choco source add -n proxychoco -s http://172.20.0.80:8081/repository/choco/ --priority 1

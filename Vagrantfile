@@ -135,7 +135,7 @@ Write-Output "Testing package if a line is uncommented."
 # THIS IS WHAT YOU CHANGE
 # - uncomment one of the two and edit it appropriately
 # - See the README for details
-#choco.exe install -fdvy INSERT_NAME --version INSERT_VERSION  --allow-downgrade
+choco.exe install -fdvy audioshell --version=2.3.6.20210925 --allow-downgrade --source "'http://172.20.0.80:8081/repository/choco/;http://chocolatey.org/api/v2/'"
 #choco.exe install -fdvy INSERT_NAME  --allow-downgrade --source "'c:\\packages;http://chocolatey.org/api/v2/'"
 
 $exitCode = $LASTEXITCODE
