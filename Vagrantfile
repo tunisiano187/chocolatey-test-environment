@@ -49,10 +49,11 @@ Vagrant.configure("2") do |config|
   config.vm.provider :hyperv do |v, override|
     # 4GB RAM
     v.memory = 4096
+    v.maxmemory = nil
     # 2 CPUs
     v.cpus = 2
     # The time in seconds to wait for the virtual machine to report an IP address
-    v.ip_address_timeout = 130
+    v.ip_address_timeout = 240
     # Use differencing disk instead of cloning whole VHD
     if Vagrant::VERSION >= '2.1.2'
       v.linked_clone = true
@@ -75,6 +76,11 @@ Vagrant.configure("2") do |config|
   config.winrm.username = "vagrant"
   config.winrm.password = "vagrant"
   config.winrm.port = 55985
+  # a long boot timeout is needed for slow host systems
+  config.vm.boot_timeout = 1800
+  # to avoid WinRM errors in the middle of booting, we ensure that (max_tries * retry_delay) > boot_timeout:
+  config.winrm.max_tries = 900
+  config.winrm.retry_delay = 2
   # explicitly tell Vagrant the guest is Windows
   config.vm.guest = :windows
 
